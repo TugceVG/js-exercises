@@ -1,13 +1,12 @@
 window.addEventListener('DOMContentLoaded', function () {
-
     const buttons = document.getElementsByClassName('cell');
     const specialChars = ['c', 'del', '='];
     const clearAllBtn = document.getElementById('clear-all-btn');
-    const del = document.getElementById('del');
+    const deleteBtn = document.getElementById('del');
     const display = document.querySelector('.display');
 
-    clearAllBtn.addEventListener('click', clearAll)
-    del.addEventListener('click', deteleItem)
+    clearAllBtn.addEventListener('click', clearAll);
+    deleteBtn.addEventListener('click', deteleItem);
 
     function selection(buttons) {
         for (let i = 0; i < buttons.length; i++) {
@@ -20,19 +19,17 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    function deteleItem() {
 
+    function deteleItem() {
         const displayToArray = display.innerHTML.split("");
         displayToArray.pop();
-        let arrayToString = (displayToArray.toString()).replace(/\,/g, "");
-        console.log(display.innerHTML = arrayToString);
+        let arrayToString = displayToArray.toString().replace(/\,/g, "");
+        display.innerHTML = arrayToString;
     }
+
     function clearAll() {
         display.textContent = '';
     }
-    selection(buttons)
-})
 
-
-
-
+    selection(buttons);
+});
