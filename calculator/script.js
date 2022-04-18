@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function () {
     const buttons = document.getElementsByClassName('cell');
-    const specialChars = ['c', 'del', '='];
+    const specialChars = ['ac', 'del', '='];
     const clearAllBtn = document.getElementById('clear-all-btn');
     const deleteBtn = document.getElementById('del');
     const display = document.querySelector('.display');

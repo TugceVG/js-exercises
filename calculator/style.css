@@ -12,6 +12,7 @@ body {
 .display {
     padding: 25px;
     font-size: 25px;
+    min-height: 30px;
     letter-spacing: 2px;
     text-align: right;
 }
@@ -19,6 +20,9 @@ body {
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
 }
 
 .cell {
@@ -29,6 +33,7 @@ body {
     padding: 25px;
     border: 1px solid lightgray;
     white-space: nowrap;
+    border-radius: 10px;
 }
 
 .cell:hover {
@@ -37,5 +42,9 @@ body {
 }
 
 .blue {
-    background: aquamarine;
+    background: #0099FF;
+}
+
+.orange {
+    background: #FF8400;
 }
