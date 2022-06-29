@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Hangman</h1>
+    <p>Please enter a letter for guessing word.</p>
+
+    <div class="container">
+        <svg class="graphic" height="250" width="250">
+            <!--scaffold-->
+            <line x1="50" y1="20" x2="130" y2="20"></line>
+            <line x1="130" y1="20" x2="130" y2="50"></line>
+            <line x1="50" y1="20" x2="50" y2="250"></line>
+            <line x1="10" y1="250" x2="90" y2="250"></line>
+
+            <!--HangmanHead-->
+            <circle class="item" cx="130" cy="70" r="20" />
+
+            <!--HangmanBody-->
+            <line class="item" x1="130" y1="90" x2="130" y2="170"></line>
+
+            <!--HangmanArms-->
+            <line class="item" x1="130" y1="90" x2="150" y2="120"></line>
+            <line class="item" x1="130" y1="90" x2="110" y2="120"></line>
+
+            <!--HangmanLegs-->
+            <line class="item" x1="130" y1="170" x2="150" y2="200"></line>
+            <line class="item" x1="130" y1="170" x2="110" y2="200"></line>
+        </svg>
+
+        <div id="wrong-letters">
+            <h3>Wrong letters</h3>
+            <span>a,b,c</span>
+        </div>
+
+        <div class="word">
+            <div class="letter">C</div>
+            <div class="letter">S</div>
+            <div class="letter">S</div>
+        </div>
+    </div>
+</body>
+
+</html>
