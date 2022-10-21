@@ -8,6 +8,7 @@ const messageElement = document.getElementById('success-message');
 const items = document.querySelectorAll('.item');
 const message = document.getElementById('message');
 const playAgainBtn = document.getElementById('play-again');
+const popup_ = document.querySelector('.popup');
 
 function getRandomWord() {
     const words = ['javascript', 'java', 'pyhton'];
@@ -50,6 +51,7 @@ function updateWrongLetters() {
     if (wrongLetters.length === items.length) {
         popup.style.display = "flex";
         messageElement.innerText = "You are lost the game";
+        popup_.style.backgroundColor = "red"
     }
 }
 
