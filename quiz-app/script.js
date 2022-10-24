@@ -24,8 +24,9 @@ Quiz.prototype.getQuestion = function () {
 
 const quiz = new Quiz(questions);
 
-document.querySelector(".btn-start").addEventListener("click", function () {
+document.querySelector(".btn_start").addEventListener("click", function () {
     if (quiz.questions.length != quiz.questionIndex) {
+        document.querySelector(".quiz_box").classList.add("active")
         console.log(quiz.getQuestion());
         quiz.questionIndex += 1;
     } else {
