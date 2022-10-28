@@ -1,7 +1,10 @@
 function UI() {
-    this.btn_start = document.querySelector(".btn_start"),
+    this.start_btn = document.querySelector(".start_btn"),
         this.next_btn = document.querySelector(".next_btn"),
+        this.replay_btn = document.querySelector(".replay_btn"),
+        this.quit_btn = document.querySelector(".quit_btn"),
         this.quiz_box = document.querySelector(".quiz_box"),
+        this.score_box = document.querySelector(".score_box"),
         this.option_list = document.querySelector(".option_list"),
         this.correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>',
         this.incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>'
@@ -33,4 +36,9 @@ UI.prototype.showQuestion = function (questionItem) {
 UI.prototype.showTheNumberOfQuestion = function (lineOfQuestion, totalQuestion) {
     let tag = `<span class="badge bg-warning">${lineOfQuestion}/${totalQuestion}</span>`;
     document.querySelector(".quiz_box .question_index").innerHTML = tag;
+}
+
+UI.prototype.showTheScore = function (totalQuestions, correctAnswerCount) {
+    let tag = `You have known ${correctAnswerCount} questions out of ${totalQuestions} questions.`;
+    document.querySelector(".score_box .score_text").innerHTML = tag;
 }
