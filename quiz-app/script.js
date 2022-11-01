@@ -3,6 +3,7 @@ const ui = new UI();
 
 ui.start_btn.addEventListener("click", function () {
     ui.quiz_box.classList.add("active");
+    startTimer(10);
     let question = quiz.getQuestion();
     ui.showQuestion(question);
     ui.showTheNumberOfQuestion(quiz.questionIndex + 1, quiz.questions.length);
@@ -12,11 +13,14 @@ ui.start_btn.addEventListener("click", function () {
 ui.next_btn.addEventListener("click", function () {
     if (quiz.questions.length != quiz.questionIndex + 1) {
         quiz.questionIndex += 1;
+        clearInterval(counter);
+        startTimer(10);
         let question = quiz.getQuestion();
         ui.showQuestion(question);
         ui.showTheNumberOfQuestion(quiz.questionIndex + 1, quiz.questions.length);
         ui.next_btn.classList.remove("show");
     } else {
+        clearInterval(counter);
         ui.quiz_box.classList.remove("active");
         ui.score_box.classList.add("active");
         ui.showTheScore(quiz.questions.length, quiz.countOfCorrectAnswer);
@@ -35,6 +39,7 @@ ui.replay_btn.addEventListener("click", function () {
 });
 
 function optionSelected(option) {
+    clearInterval(counter);
     let answer = option.querySelector("span b").textContent;
     let question = quiz.getQuestion();
 
@@ -53,5 +58,31 @@ function optionSelected(option) {
 
     ui.next_btn.classList.add("show");
 
+}
+
+let counter;
+function startTimer(time) {
+    counter = setInterval(timer, 1000);
+
+    function timer() {
+        ui.time_second.textContent = time;
+        time--;
+
+        if (time < 0) {
+            clearInterval(counter);
+            ui.time_text.textContent = "End of time";
+            let answer = quiz.getQuestion().correctAnswer;
+            for (let option of ui.option_list.children) {
+
+                if (option.querySelector("span b").textContent == answer) {
+                    option.classList.add("correct");
+                    option.insertAdjacentHTML("beforeend", ui.correctIcon);
+                }
+
+                option.classList.add("disabled");
+            }
+            ui.next_btn.classList.add("show");
+        }
+    }
 }
 
