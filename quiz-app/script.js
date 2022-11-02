@@ -3,7 +3,8 @@ const ui = new UI();
 
 ui.start_btn.addEventListener("click", function () {
     ui.quiz_box.classList.add("active");
-    startTimer(10);
+    startTimer(89);
+    startTimerLine();
     let question = quiz.getQuestion();
     ui.showQuestion(question);
     ui.showTheNumberOfQuestion(quiz.questionIndex + 1, quiz.questions.length);
@@ -14,13 +15,16 @@ ui.next_btn.addEventListener("click", function () {
     if (quiz.questions.length != quiz.questionIndex + 1) {
         quiz.questionIndex += 1;
         clearInterval(counter);
-        startTimer(10);
+        clearInterval(counterLine);
+        startTimer(89);
+        ui.time_text.textContent = "Remaining time";
         let question = quiz.getQuestion();
         ui.showQuestion(question);
         ui.showTheNumberOfQuestion(quiz.questionIndex + 1, quiz.questions.length);
         ui.next_btn.classList.remove("show");
     } else {
         clearInterval(counter);
+        clearInterval(counterLine);
         ui.quiz_box.classList.remove("active");
         ui.score_box.classList.add("active");
         ui.showTheScore(quiz.questions.length, quiz.countOfCorrectAnswer);
@@ -40,6 +44,7 @@ ui.replay_btn.addEventListener("click", function () {
 
 function optionSelected(option) {
     clearInterval(counter);
+    clearInterval(counterLine);
     let answer = option.querySelector("span b").textContent;
     let question = quiz.getQuestion();
 
@@ -82,6 +87,22 @@ function startTimer(time) {
                 option.classList.add("disabled");
             }
             ui.next_btn.classList.add("show");
+        }
+    }
+}
+
+let counterLine;
+function startTimerLine() {
+    let line_width = 0;
+
+    counterLine = setInterval(timer, 100);
+
+    function timer() {
+        line_width += (550 / 90) / 10;
+        ui.time_line.style.width = line_width + "px";
+
+        if (line_width > 549) {
+            clearInterval(counterLine);
         }
     }
 }
