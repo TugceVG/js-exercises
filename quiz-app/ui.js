@@ -14,20 +14,47 @@ function UI() {
 }
 
 UI.prototype.showQuestion = function (questionItem) {
-    let question = `<span>${questionItem.questionText}</span>`;
-    let options = '';
+    // let question = `<span>${questionItem.questionText}</span>`;
+    const question = document.createElement("span");
+    question.textContent = questionItem.questionText;
+    // let options = '';
 
-    for (let answer in questionItem.options) {
-        options +=
-            `
-        <div class="option">
-        <span><b>${answer}</b>:${questionItem.options[answer]} </span>
-        </div>
-        `
+    let questionText = document.querySelector(".question_text");
+    while (questionText.firstChild) {
+        questionText.removeChild(questionText.firstChild);
     }
 
-    document.querySelector(".question_text").innerHTML = question;
-    this.option_list.innerHTML = options;
+
+    let element = document.querySelector(".option_list");
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+
+    for (let answer in questionItem.options) {
+        // options +=
+        //     `
+        // <div class="option">
+        // <span><b>${answer}</b>:${questionItem.options[answer]} </span>
+        // </div>
+        // `
+        let option = document.createElement("div");
+        option.classList.add("option");
+        let optionContainer = document.createElement("span");
+        let optionKeyText = document.createElement("b");
+        let answerText = document.createElement("span");
+
+        optionKeyText.textContent = `${answer}: `;
+        answerText.textContent = questionItem.options[answer];
+        // optionContainer.textContent = optionKeyText.textContent + questionItem.options[answer];
+        optionContainer.appendChild(optionKeyText);
+        optionContainer.appendChild(answerText);
+        option.appendChild(optionContainer);
+        document.querySelector(".option_list").appendChild(option);
+    }
+
+    // document.querySelector(".question_text").innerHTML = question;
+    document.querySelector(".question_text").appendChild(question);
+    // this.option_list.innerHTML = options;
 
     const option = this.option_list.querySelectorAll(".option");
 

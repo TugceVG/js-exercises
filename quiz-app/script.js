@@ -79,7 +79,7 @@ function startTimer(time) {
             let answer = quiz.getQuestion().correctAnswer;
             for (let option of ui.option_list.children) {
 
-                if (option.querySelector("span b").textContent == answer) {
+                if (option.querySelector("span b").textContent.replace(': ', '') == answer) {
                     option.classList.add("correct");
                     option.insertAdjacentHTML("beforeend", ui.correctIcon);
                 }
