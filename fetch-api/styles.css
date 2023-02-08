@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.post-div {
+    width: 100vh;
+    height: 100%;
+    border: 3px solid gray;
+    border-radius: 5px;
+    background-color: palegoldenrod;
+}
+
+.post-div > h3{
+    border-bottom: 5px solid grey;
+} 
+
