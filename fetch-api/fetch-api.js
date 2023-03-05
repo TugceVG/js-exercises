@@ -23,6 +23,7 @@ const getPosts = async () => {
     try {
         const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
         // my local comment !
+        // the comment from remote !
         writeToScreen(res.data);
     } catch (e) {
         console.log(e)
