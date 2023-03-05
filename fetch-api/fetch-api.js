@@ -22,6 +22,7 @@ const getPosts = async () => {
     //Fetching data by Axios Fetch
     try {
         const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+        // the comment from remote !
         writeToScreen(res.data);
     } catch (e) {
         console.log(e)
