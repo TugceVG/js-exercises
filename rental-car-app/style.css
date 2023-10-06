@@ -31,19 +31,24 @@ body {
     background: #eaeaea;
 }
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 8%;
-    /* background: transparent; */
-    background: #eaeaea;
+iframe {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+}
+
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    background: #eaeaea;
+    width: 100%;
+    padding: 20px 8%;
+    position: fixed;
+    top: 0;
+    left: 0;
     box-shadow: 0 0 10px #ccc;
+    z-index: 100;
 }
 
 header .logo-container {
@@ -53,7 +58,7 @@ header .logo-container {
     height: 40px;
 }
 
-.logo-container a {
+.logo-container a{
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -68,34 +73,25 @@ header .logo-container {
     height: 35px;
 }
 
-/* .navbar a {
-    font-size: 20px;
-    color: var(--text-color);
-    font-weight: 500;
-    margin: 0 20px;
-    transition: 0.5s;
-}
-
-.navbar a:hover, .navbar a.active {
-    color: #f36521;
-} */
-
-.navbar {
+.nav-links .nav {
+    margin: 0;
+    padding: 0;
     display: flex;
 }
 
-.navbar li {
+.nav li {
     position: relative;
 }
 
-.navbar a {
+.nav a {
+    display: block;
     font-size: 1rem;
     padding: 10px 20px;
     color: var(--text-color);
     font-weight: 500;
 }
 
-.navbar a::after {
+.nav li::after {
     content: "";
     width: 0;
     height: 4px;
@@ -106,28 +102,34 @@ header .logo-container {
     transition: 0.5s;
 }
 
-.navbar a:hover::after {
+.nav li:hover::after {
     width: 100%;
 }
 
-#menu-icon {
-    position: absolute;
-    right: 50px;
-    font-size: 50px;
-    cursor: pointer;
-    z-index: 10001;
+.toggle-button {
     display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 35px;
+    height: 25px;
 }
 
-#menu-icon:hover {
-    color: #f36521;
+.toggle-button:hover span {
+    background-color: var(--main-color);
+}
+
+.toggle-button .icon-bar {
+    height: 5px;
+    width: 100%;
+    background-color: var(--text-color);
+    border-radius: 10px;
 }
 
 .social-media {
     display: flex;
     justify-content: space-between;
-    width: 120px;
-    height: 50px;
+    align-items: center;
+    gap: 10px;
 }
 
 .social-media a {
@@ -186,6 +188,27 @@ header .logo-container {
 .home-content p {
     font-size: 20px;
     margin: 15px 0 30px;
+}
+
+.home-content .car-brand {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    background: transparent;
+    width: 100vw;
+}
+
+.home-content .car-brand .car-brand-item {
+    height: 100px;
+}
+
+.home-content .car-brand .car-brand-item svg{
+    height: 100%;
+    width: 400px;
+    opacity: 0.3;
 }
 
 .btn {
@@ -270,7 +293,6 @@ header .logo-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
     padding: 0 5%;
 }
 
@@ -326,10 +348,10 @@ header .logo-container {
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
     gap: 20px;
-    /* margin-top: 40px; */
 }
 
 .services-container .box {
+    height: 100%;
     text-align: center;
     padding: 20px;
     box-shadow: 0 0 10px #ccc;
@@ -345,7 +367,7 @@ header .logo-container {
 }
 
 .services-container .box h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
     margin: 1.4rem 0 0.5rem;
 }
@@ -417,7 +439,7 @@ header .logo-container {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 50px 8% 0;
+    padding: 50px 8%;
 }
 
 .contact .contact-container{
@@ -429,10 +451,12 @@ header .logo-container {
 }
 
 .contact-container .address,.contact-container .location {
+    position: relative;
     border-radius: 10px;
     box-shadow: 0 0 10px #ccc;
     padding: 20px;
     width: 49%;
+    min-height: 300px;
 }
 
 
@@ -492,34 +516,45 @@ header .logo-container {
 }
 
 @media screen and (max-width: 1300px){
-    #menu-icon {
+    .navbar {
+        flex-direction: row;
+    }
+
+    .toggle-button {
         display: flex;
+    }
+
+    .nav-links .nav {
+        flex-direction: column;
         align-items: flex-end;
     }
 
-    .header {
+    .nav-links {
         flex-direction: column;
-        align-items: flex-start;
+        position: absolute;
+        top: 90px;
+        right: 0;
+        padding: 10px 0;
+        background: #eaeaea;
+        width: 0px;
+        overflow: hidden;
+        transition: width 0.5s ease;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px;
     }
 
-    .header .navbar {
-        display: none;
+    .nav-links.active {
+        width: 250px;
+    }
+
+    .nav-links li {
         width: 100%;
-        flex-direction: column;
-    }
-
-    .navbar.active {
         display: flex;
-        width: 100%;
-        flex-direction: column;
+        justify-content: center;
+        white-space: nowrap;
     }
 
-    .navbar li {
-        text-align: center;
-    }
-
-    .social-media {
-        display: none;
+    .nav-links li a {
+        padding: 10px 20px;
     }
 }
 
@@ -530,12 +565,18 @@ header .logo-container {
     }
 
     .home-img .circle {
-        width: 85%;
-        height: 85%;
-        border-radius: 50% 50% 0 50%;
+        border: none;
+        background: transparent;
         box-shadow: none;
         margin-bottom: 1%;
     }
+
+@media screen and (max-width: 1035px) {
+    .home-content .car-brand{
+        display: none;
+    }
+}
+
 
     .home-img .circle img {
         top: 10px;
@@ -560,25 +601,25 @@ header .logo-container {
     }
 }
 
-@media screen and (max-width: 652px){
-    /* .about-content {
-        align-items: flex-start;
-    } */
-
+@media screen and (max-width: 652px) {
     .about-content a {
         border: 1px solid #ccc;
         border-radius: 20px;
         padding: 3px 5px;
         margin-bottom: 5px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        width: 100%;
     }
 }
 
 @media screen and (max-width: 600px){
     .home-img {
-        /* display: none; */
         width: 350px;
         height: 350px;
+    }
+
+    .contact-container .address,.contact-container .location {
+        width: 100%;
     }
 }
 
