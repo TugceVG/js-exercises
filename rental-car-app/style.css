@@ -1,34 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
+/* reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
     list-style: none;
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-}
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
 
 :root {
     --main-color:#f36521;
-    --second-color: #fce6db;
-    --third-color: #eeeff1;
-    --text-color:#222;
+    --second-color: #eaeaea;
+    --third-color: #222;
     --gradient: linear-gradient(#f36521,#fce6db);
-    --gradient2: linear-gradient(#eeeff1,#ddd8d5);
     font-size: 20px;
+
+    --bg-color: var(--second-color);
+    --text-color: var(--third-color);
+}
+
+:root[data-theme="dark"] {
+    --bg-color: var(--third-color);
+    --text-color: var(--second-color);
 }
 
 body {
-    background: #eaeaea;
+    background: var(--bg-color);
 }
 
 iframe {
@@ -37,11 +36,11 @@ iframe {
     border-radius: 10px;
 }
 
-.navbar {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #eaeaea;
+    background: var(--bg-color);
     width: 100%;
     padding: 20px 8%;
     position: fixed;
@@ -73,17 +72,17 @@ header .logo-container {
     height: 35px;
 }
 
-.nav-links .nav {
+.navbar .nav-links {
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-.nav li {
+.nav-links li {
     position: relative;
 }
 
-.nav a {
+.nav-links a {
     display: block;
     font-size: 1rem;
     padding: 10px 20px;
@@ -91,7 +90,7 @@ header .logo-container {
     font-weight: 500;
 }
 
-.nav li::after {
+.nav-links li::after {
     content: "";
     width: 0;
     height: 4px;
@@ -102,7 +101,7 @@ header .logo-container {
     transition: 0.5s;
 }
 
-.nav li:hover::after {
+.nav-links li:hover::after {
     width: 100%;
 }
 
@@ -143,11 +142,15 @@ header .logo-container {
 
 .social-media a i {
     font-size: 40px;
-    background: transparent;
+    /* background: transparent; */
     color: var(--text-color);
 }
 
 .social-media a i:hover {
+    color: var(--main-color);
+}
+
+.dark {
     color: var(--main-color);
 }
 
@@ -174,10 +177,13 @@ header .logo-container {
 .home .home-content .brand :last-child  {
     width: 20%;
     height: 20%;
+    background: #eaeaea;
+    border-radius: 5px;
 }
 
 .home-content h1 {
     font-size: 60px;
+    color: var(--text-color);
 }
 
 .home-content h1:first-child {
@@ -188,6 +194,7 @@ header .logo-container {
 .home-content p {
     font-size: 20px;
     margin: 15px 0 30px;
+    color: var(--text-color);
 }
 
 .home-content .car-brand {
@@ -209,6 +216,7 @@ header .logo-container {
     height: 100%;
     width: 400px;
     opacity: 0.3;
+    fill: var(--main-color);
 }
 
 .btn {
@@ -242,7 +250,7 @@ header .logo-container {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: var(--third-color);
+    background: var(--bg-color);
     border: 25px solid var(--main-color);
     box-shadow: 10px 1px 10px rgba(0, 0, 0, .3);
 }
@@ -261,7 +269,7 @@ header .logo-container {
     right: -20%;
     width: 700px;
     height: 700px;
-    background: #f36521;
+    background: var(--main-color);
     transform: rotate(45deg);
     z-index: -1;
 }
@@ -374,7 +382,7 @@ header .logo-container {
 
 .services-container .box .bx:hover, .services-container .bx {
     background: var(--gradient);
-    color: var(--third-color)
+    color: var(--bg-color)
 }
 
 .reviews {
@@ -516,7 +524,7 @@ header .logo-container {
 }
 
 @media screen and (max-width: 1300px){
-    .navbar {
+    .header {
         flex-direction: row;
     }
 
@@ -524,12 +532,12 @@ header .logo-container {
         display: flex;
     }
 
-    .nav-links .nav {
+    .navbar .nav-links {
         flex-direction: column;
         align-items: flex-end;
     }
 
-    .nav-links {
+    .navbar {
         flex-direction: column;
         position: absolute;
         top: 90px;
@@ -542,18 +550,18 @@ header .logo-container {
         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px;
     }
 
-    .nav-links.active {
+    .navbar.active {
         width: 250px;
     }
 
-    .nav-links li {
+    .navbar li {
         width: 100%;
         display: flex;
         justify-content: center;
         white-space: nowrap;
     }
 
-    .nav-links li a {
+    .navbar li a {
         padding: 10px 20px;
     }
 }
