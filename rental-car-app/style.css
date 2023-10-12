@@ -309,16 +309,15 @@ header .logo-container {
     max-width: 630px;
     display: flex;
     flex-direction: column;
-
 }
 
-.about-content a{
+.about-content li {
     display: flex;
     align-items: center;
     color: var(--text-color);
 }
 
-.about-content a i{
+.about-content li i{
     font-size: 30px;
     margin-right: 10px;
 }
@@ -617,7 +616,7 @@ header .logo-container {
 }
 
 @media screen and (max-width: 652px) {
-    .about-content a {
+    .about-content li {
         border: 1px solid #ccc;
         border-radius: 20px;
         padding: 3px 5px;
@@ -651,6 +650,10 @@ header .logo-container {
     }
 
     .home-img {
+        display: none;
+    }
+
+    .logo-text {
         display: none;
     }
 }
