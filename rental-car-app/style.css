@@ -93,10 +93,10 @@ header .logo-container {
 .nav-links li::after {
     content: "";
     width: 0;
-    height: 4px;
-    background: var(--gradient);
+    height: 3px;
+    background: var(--main-color);
     position: absolute;
-    bottom: -4px;
+    bottom: -2px;
     left: 0;
     transition: 0.5s;
 }
@@ -150,7 +150,7 @@ header .logo-container {
     color: var(--main-color);
 }
 
-.dark {
+#bulbButton .dark {
     color: var(--main-color);
 }
 
@@ -287,6 +287,7 @@ header .logo-container {
 
 .heading h3{
     font-size: 1.2rem;
+    color: var(--text-color);
 }
 
 .about-container {
@@ -314,6 +315,7 @@ header .logo-container {
 .about-content a{
     display: flex;
     align-items: center;
+    color: var(--text-color);
 }
 
 .about-content a i{
@@ -364,6 +366,7 @@ header .logo-container {
     padding: 20px;
     box-shadow: 0 0 10px #ccc;
     border-radius: 20px;
+    color: var(--text-color);
 }
 
 .services-container .box .bx {
@@ -402,7 +405,8 @@ header .logo-container {
 
 .reviews-container .box {
     transition: transform .2s;
-    background: #eaeaea;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 .reviews-container .box:hover {
@@ -431,6 +435,7 @@ header .logo-container {
     padding: 1rem;
     box-shadow: 1px 4px 41px rgba(0,0,0,0.1);
     border-radius: 20px;
+    box-shadow: 0 0 10px #ccc;
 }
 
 .reviews-container .box h2 {
@@ -465,8 +470,8 @@ header .logo-container {
     padding: 20px;
     width: 49%;
     min-height: 300px;
+    color: var(--text-color)
 }
-
 
 .footer-container {
     display: flex;
@@ -475,6 +480,7 @@ header .logo-container {
     background: transparent;
     padding: 15px 10%;
     box-shadow: 0 0 10px #ccc;
+    color: var(--text-color);
 }
 
 .footer-container span {
@@ -540,14 +546,15 @@ header .logo-container {
     .navbar {
         flex-direction: column;
         position: absolute;
-        top: 90px;
+        top: 91px;
         right: 0;
         padding: 10px 0;
-        background: #eaeaea;
+        background: var(--bg-color);
         width: 0px;
         overflow: hidden;
         transition: width 0.5s ease;
-        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px;
+        /* box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px;*/
+        box-shadow: 0 0 10px #ccc;
     }
 
     .navbar.active {
