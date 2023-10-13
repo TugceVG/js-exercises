@@ -311,7 +311,7 @@ header .logo-container {
     flex-direction: column;
 }
 
-.about-content li {
+.about-content ul li {
     display: flex;
     align-items: center;
     color: var(--text-color);
@@ -399,7 +399,22 @@ header .logo-container {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(250px,auto));
     gap: 1rem;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
+}
+
+.WidgetTitle__Header-sc-ruy1gu-2 {
+    display: none
+}
+
+.es-review-background-container {
+    background-color: var(--bg-color);
+    border: 2px solid var(--text-color);
+}
+
+.es-review-content,
+.es-review-author-name,
+.es-review-info-date {
+    color: var(--text-color) !important;
 }
 
 .reviews-container .box {
